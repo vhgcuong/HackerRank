@@ -15,18 +15,17 @@ fn main() {
     }
     println!();
 
-    // let mut primary_diagonal: i32;
-    // let mut secondary_diagonal: i32;
+    let mut primary_diagonal: i32 = 0;
+    let mut secondary_diagonal: i32 = 0;
 
-    // for (key, <item>) in matrix.iter().enumerate().take(size) {
     for key in 0..size {
-        println!("{}", matrix[key][key]);
+        primary_diagonal += matrix[key][key];
+        secondary_diagonal += matrix[key][size - key - 1];
     }
-    println!();
-
-    // for (key, <item>) in matrix.iter().enumerate().take(size) {
-    for key in 0..size {
-        // primary_diagonal += matrix[key][key];
-        println!("{}", matrix[key][size - key - 1]);
-    }
+    println!(
+        "|{} - {}| = {}",
+        primary_diagonal,
+        secondary_diagonal,
+        primary_diagonal.abs_diff(secondary_diagonal)
+    );
 }
